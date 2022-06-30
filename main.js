@@ -138,15 +138,17 @@ posts.forEach((element, index) =>{
 });
 
 const like = document.querySelectorAll('.js-like-button');
-const counter = document.getElementById('like-counter-1');
+const counter = document.querySelectorAll('.js-likes-counter');
 for(let i=0; i<like.length; i++){
     like[i].addEventListener('click', function(){
         like[i].classList.toggle('like-button--liked');
+        
         if(like[i].classList.contains('like-button--liked')){
-            counter.innerText = parseInt(counter.innerText)+1;
+            counter[i].innerText = (counter.innerText)+1;
+            console.log(typeof(counter[i].innerText));
         }
         else{
-            counter.innerText = parseInt(counter.innerText)-1;
+            counter[i].innerText = parseInt(counter.innerText)-1;
         } 
     });
 }
