@@ -96,6 +96,17 @@ const posts = [
         "created": "2021-12-11"
     }
 ];
+const aa=[];
+const mm=[];
+const dd=[];
+posts.forEach((element, index) =>{
+   aa[index]=element.created.split("-")[0];
+   mm[index]=element.created.split("-")[1];
+   dd[index]=element.created.split("-")[2];
+});
+console.log(aa, dd, mm);
+
+
 const firstLetter=[];
 const lastLetter=[];
 posts.forEach((elemento, index) =>{
@@ -116,7 +127,7 @@ posts.forEach((element, index) =>{
                     </div>
                     <div class="post-meta__data">
                         <div class="post-meta__author">${element.author.name}</div>
-                        <div class="post-meta__time">4 mesi fa</div>
+                        <div class="post-meta__time">${dd[index]}-${mm[index]}-${aa[index]}</div>
                     </div>
                 </div>
             </div>
