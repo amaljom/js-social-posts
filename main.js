@@ -135,3 +135,14 @@ posts.forEach((element, index) =>{
             </div>
         </div>`
 });
+
+const like = document.querySelector('.js-like-button');
+const counter = document.getElementById('like-counter-1');
+
+like.addEventListener('click', function (){
+    like.classList.toggle('like-button--liked');
+    if(like.classList.includes('like-button--liked')){
+        counter.innerHTML += `<b id="like-counter-1" class="js-likes-counter">${element.likes } </b>`
+    }
+})
+
