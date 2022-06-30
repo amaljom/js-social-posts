@@ -101,7 +101,7 @@ const container = document.getElementById('container');
 
 posts.forEach((element, index) =>{
     if (element.author.image==null || element.author.image=='null'){
-        element.author.image="https://i.pinimg.com/280x280_RS/55/96/4e/55964ebb02710d6b9ce1c26f1d857906.jpg"   
+        element.author.image="";   
     }
     container.innerHTML+= `
     <div class="post">
@@ -123,8 +123,8 @@ posts.forEach((element, index) =>{
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="1">
-                            <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                        <a id="likes" class="like-button  js-like-button"  data-postid="1">
+                            <i class="like-button__icon fas fa-thumbs-up" href="#" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
                     </div>
@@ -134,15 +134,22 @@ posts.forEach((element, index) =>{
                 </div>
             </div>
         </div>`
+        
 });
 
-const like = document.querySelector('.js-like-button');
+const like = document.querySelectorAll('.js-like-button');
 const counter = document.getElementById('like-counter-1');
+for(let i=0; i<like.length; i++){
+    like[i].addEventListener('click', function(){
+        like[i].classList.toggle('like-button--liked');
+        if(like[i].classList.contains('like-button--liked')){
+            counter.innerText = parseInt(counter.innerText)+1;
+        }
+        else{
+            counter.innerText = parseInt(counter.innerText)-1;
+        } 
+    });
+}
 
-like.addEventListener('click', function (){
-    like.classList.toggle('like-button--liked');
-    if(like.classList.includes('like-button--liked')){
-        counter.innerHTML += `<b id="like-counter-1" class="js-likes-counter">${element.likes } </b>`
-    }
-})
 
+    
