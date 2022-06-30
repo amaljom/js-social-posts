@@ -96,19 +96,23 @@ const posts = [
         "created": "2021-12-11"
     }
 ];
+const firstLetter=[];
+const lastLetter=[];
+posts.forEach((elemento, index) =>{
+    firstLetter[index]=elemento.author.name.split(" ")[0].split("")[0];
+    lastLetter[index]=elemento.author.name.split(" ")[1].split("")[0];
+});
 
 const container = document.getElementById('container');
 
 posts.forEach((element, index) =>{
-    if (element.author.image==null || element.author.image=='null'){
-        element.author.image="";   
-    }
+    
     container.innerHTML+= `
     <div class="post">
             <div class="post__header">
                 <div class="post-meta">
                     <div class="post-meta__icon">
-                        <img class="profile-pic" src="${element.author.image}" alt="${element.author.name}">
+                        <img class="profile-pic" src="${element.author.image}" alt="${firstLetter[index]} ${lastLetter[index]}">
                     </div>
                     <div class="post-meta__data">
                         <div class="post-meta__author">${element.author.name}</div>
@@ -137,6 +141,8 @@ posts.forEach((element, index) =>{
         
 });
 
+
+
 const like = document.querySelectorAll('.js-like-button');
 const counter = document.querySelectorAll('.js-likes-counter');
 for(let i=0; i<like.length; i++){
@@ -153,6 +159,3 @@ for(let i=0; i<like.length; i++){
         } 
     });
 }
-
-
-    
